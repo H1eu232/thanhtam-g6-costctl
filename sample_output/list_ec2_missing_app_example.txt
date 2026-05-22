@@ -1,4 +1,0 @@
-EC2 (no filter) — 2 found:
---------------------------------------------------------------------------------
-  i-0abc123def456789a       t3.micro               running        Environment=dev, Owner=alice
-  i-0xyz789lmn012345d       t3.large               running        Owner=diana, Application=LoadBalancer
