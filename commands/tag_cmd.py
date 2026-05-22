@@ -43,29 +43,59 @@ USEFUL COMBO
       --set Application=HealthBot
 """
 import boto3
+from botocore.exceptions import ClientError
 
-from commands._common import parse_kv
+from commands._common import parse_kv, tags_to_dict
 
 
 def _to_tags(set_args):
     """Convert ['k1=v1', 'k2=v2'] to [{'Key':'k1','Value':'v1'}, ...]."""
-    raise NotImplementedError("TODO: implement _to_tags using parse_kv")
+    return [{"Key": k, "Value": v} for k, v in (parse_kv(s) for s in set_args)]
 
 
 def _tag_ec2(rid, tags):
-    raise NotImplementedError("TODO: implement _tag_ec2 using create_tags")
+    """Tag EC2 instance using create_tags."""
+    ec2 = boto3.client("ec2")
+    ec2.create_tags(Resources=[rid], Tags=tags)
 
 
 def _tag_rds(rid, tags):
-    raise NotImplementedError("TODO: implement _tag_rds — remember to fetch ARN first")
+    """Tag RDS instance — fetch ARN first, then add_tags_to_resource."""
+    rds = boto3.client("rds")
+    # Fetch the ARN
+    response = rds.describe_db_instances(DBInstanceIdentifier=rid)
+    arn = response["DBInstances"][0]["DBInstanceArn"]
+    # Add tags
+    rds.add_tags_to_resource(ResourceName=arn, Tags=tags)
 
 
 def _tag_s3(rid, tags):
-    raise NotImplementedError("TODO: implement _tag_s3 — MERGE with existing tags, don't replace")
+    """Tag S3 bucket — merge with existing tags, then put_bucket_tagging."""
+    s3 = boto3.client("s3")
+    
+    # Get existing tags
+    try:
+        response = s3.get_bucket_tagging(Bucket=rid)
+        existing_tags = tags_to_dict(response.get("TagSet", []))
+    except ClientError:
+        # No existing tagging config
+        existing_tags = {}
+    
+    # Merge new tags (new tags override existing)
+    for tag_dict in tags:
+        existing_tags[tag_dict["Key"]] = tag_dict["Value"]
+    
+    # Convert back to TagSet format
+    tag_set = [{"Key": k, "Value": v} for k, v in existing_tags.items()]
+    
+    # Put the merged tags
+    s3.put_bucket_tagging(Bucket=rid, Tagging={"TagSet": tag_set})
 
 
 def _tag_volume(rid, tags):
-    raise NotImplementedError("TODO: implement _tag_volume using create_tags")
+    """Tag EBS volume using create_tags."""
+    ec2 = boto3.client("ec2")
+    ec2.create_tags(Resources=[rid], Tags=tags)
 
 
 DISPATCH = {
@@ -84,4 +114,12 @@ def run(args):
         args.id    — resource identifier
         args.set   — list[str], each "key=value"
     """
-    raise NotImplementedError("TODO: implement run() — see module docstring")
+    tags = _to_tags(args.set)
+    try:
+        DISPATCH[args.type](args.id, tags)
+        tag_strs = ", ".join(f"{t['Key']}={t['Value']}" for t in tags)
+        print(f"Applied {len(tags)} tag(s) to {args.type} {args.id}: {tag_strs}")
+    except ClientError as e:
+        code = e.response["Error"]["Code"]
+        message = e.response["Error"]["Message"]
+        print(f"AWS error [{code}]: {message}")
