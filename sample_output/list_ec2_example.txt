@@ -6,3 +6,5 @@ EC2 (no filter) — 3 found:
 
 # REPLACE WITH REAL OUTPUT from running:
 #   ./costctl.py list ec2 > sample_output/list_ec2_<date>.txt
+EC2 (no filter) � 0 found:
+--------------------------------------------------------------------------------
