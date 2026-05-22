@@ -1,5 +1,3 @@
-EC2 Environment=dev — 3 found:
+EC2 (no filter) — 1 found:
 --------------------------------------------------------------------------------
-  i-0abc123def456789a       t3.micro               running        Environment=dev, Owner=alice, Application=HealthBot
-  i-0def456ghi789012b       t3.small               running        Environment=dev, Owner=bob, Application=WebServer
-  i-0ghi789jkl012345c       t3.medium              stopped        Environment=dev, Owner=charlie, Application=Database
+i-02118d39d96906782            t3.micro             running         Environment=prod, ManagedBy=terraform, Name=hexacode-prod-management-ssm-bastion, Project=hexacode
