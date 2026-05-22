@@ -45,7 +45,7 @@ All 25 tests passing. Ready for production use.
 
 ```bash
 # 1. Fork / clone
-git clone <your-fork-url> g<N>-costctl && cd g<N>-costctl
+git clone https://github.com/H1eu232/thanhtam-g6-costctl.git g6-costctl && cd g6-costctl
 
 # 2. Install
 make install-dev                   # or: pip install -r requirements-dev.txt
