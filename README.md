@@ -284,18 +284,18 @@ Add a `REFLECTIONS.md` to your repo. Sample prompts:
 
 ## Submission checklist (W6 side challenge)
 
-- [ ] Fork → rename to `g<N>-costctl` → clone locally
-- [ ] `make install-dev && make test` shows 10 passed at start
-- [ ] Implement `list` → `pytest tests/test_list.py` all green (7 more pass)
-- [ ] Implement ≥ 2 of (`cost`, `terminate`, `tag`) — `terminate` tests green if you pick it
-- [ ] (optional stretch) `clean` → `pytest tests/test_clean.py` green; or `idle` / `migrate-gp3`
-- [ ] `make test` final score reported in README (e.g. "21/25 passing")
-- [ ] Replace `sample_output/*_example.txt` with real outputs from your account
-- [ ] `REFLECTIONS.md` with 2+ answers
-- [ ] At least 3 meaningful commits (init → first command working → final polish)
-- [ ] Replace `g<N>` placeholders throughout README with your real group number
+- [X] Fork → rename to `g<N>-costctl` → clone locally
+- [X] `make install-dev && make test` shows 10 passed at start
+- [X] Implement `list` → `pytest tests/test_list.py` all green (7 more pass)
+- [X] Implement ≥ 2 of (`cost`, `terminate`, `tag`) — `terminate` tests green if you pick it
+- [X] (optional stretch) `clean` → `pytest tests/test_clean.py` green; or `idle` / `migrate-gp3`
+- [X] `make test` final score reported in README (e.g. "21/25 passing")
+- [X] Replace `sample_output/*_example.txt` with real outputs from your account
+- [X] `REFLECTIONS.md` with 2+ answers
+- [X] At least 3 meaningful commits (init → first command working → final polish)
+- [X] Replace `g<N>` placeholders throughout README with your real group number
 - [ ] Add Team section with member names
-- [ ] Tag: `git tag w6-sidechallenge-v1 && git push --tags`
+- [X] Tag: `git tag w6-sidechallenge-v1 && git push --tags`
 - [ ] Post link in Slack `#w6-sidechallenge` thread:
       `G<N> — <repo-url> — implemented: list, cost, terminate (21/25 tests passing)`
 
@@ -312,10 +312,7 @@ MIT — see `LICENSE`.
 
 ## Team
 
-> Replace before submission:
-
 - <Lê Ngọc Thành Tâm>
-
 
 ---
 
