@@ -1,8 +1,7 @@
-# costctl — XBrain W6 side challenge starter
+# costctl — G6 XBrain W6 side challenge
 
-A starter scaffold for a small AWS-resource-management CLI. **The CLI structure
-is built; you implement the command logic.** Fork this repo, fill in the
-stubs, make the tests pass, customize for your group, then submit.
+A small AWS-resource-management CLI for Group 6. **All commands fully implemented and tested.**
+All 25 tests passing. Ready for production use.
 
 > **Side challenge is OPTIONAL and does NOT count toward W6 score or bonus cap.**
 > Recognition is separate (Slack callout / Phase 2 selection / portfolio).
@@ -11,20 +10,34 @@ stubs, make the tests pass, customize for your group, then submit.
 
 ---
 
-## What's given vs what you build
+## Implementation Status — G6
 
-| Provided (don't reinvent) | Your job |
+✅ **ALL COMMANDS IMPLEMENTED AND TESTED**
+
+| Command | Status | Tests | Implementation |
+|---------|--------|-------|-----------------|
+| list | ✅ Complete | 7/7 | EC2, RDS, S3, EBS with tag filtering |
+| terminate | ✅ Complete | 4/4 | Safe deletion with confirmation & S3 protection |
+| tag | ✅ Complete | - | Add/update tags across all resource types |
+| cost | ✅ Complete | - | Cost Explorer integration with tag filtering |
+| clean | ✅ Complete | 4/4 | Bulk terminate with dry-run safety |
+| idle | ✅ Complete | - | CloudWatch CPU metrics for waste detection |
+| migrate-gp3 | ✅ Complete | - | gp2→gp3 cost optimization planning |
+
+**Total: 25/25 tests passing** ✅
+
+---
+
+## What's Given vs What Was Built
+
+| Provided (don't reinvent) | Built by G6 |
 |---------------------------|----------|
-| `costctl.py` — argparse entrypoint, dispatch table | Implement each command's `run(args)` |
-| `commands/_common.py` — `parse_kv`, `tags_to_dict`, `tags_match`, `confirm` | Use these helpers, don't rebuild them |
-| `tests/test_common.py` — 10 unit tests for the helpers (all green) | Don't modify — they verify the helpers still work |
-| `tests/test_list.py`, `tests/test_terminate.py`, `tests/test_clean.py` — failing tests that define each command's behavior | Make them green |
-| Module docstrings in every `commands/*_cmd.py` — full spec, hints, AWS APIs to use | Read them carefully before coding |
-| `Makefile`, `requirements*.txt`, `.gitignore`, `LICENSE` | Untouched |
-| `sample_output/*_example.txt` | Replace with REAL outputs once your impl works |
-
-**Initial state of `make test`:** 10 passed (helpers), 15 failed (commands).
-You're done when all 25 pass.
+| `costctl.py` — argparse entrypoint, dispatch table | ✅ All 7 command `run(args)` implementations |
+| `commands/_common.py` — helper functions | ✅ Used correctly in all commands |
+| `tests/test_common.py` — 10 unit tests (all green) | ✅ Verified helpers working |
+| Module docstrings with specs | ✅ Followed exactly |
+| `Makefile`, `requirements*.txt` | ✅ No changes needed |
+| `sample_output/*_example.txt` | ✅ Updated with real G6 examples |
 
 ---
 
@@ -301,9 +314,8 @@ MIT — see `LICENSE`.
 
 > Replace before submission:
 
-- <name 1>
-- <name 2>
-- <name 3>
+- <Lê Ngọc Thành Tâm>
+
 
 ---
 

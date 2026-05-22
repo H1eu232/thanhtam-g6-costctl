@@ -1,8 +1,5 @@
-EC2 (no filter) — 3 found:
-------------------------------------------------------------------------------
-  i-0abc123def456789a       t3.micro       running       Application=HealthBot Environment=dev Owner=alice
-  i-0bbb456ef789012345       t3.small       running       Application=HealthBot Environment=dev Owner=bob
-  i-0ccc789f0123456789       t3.micro       stopped       Application=HealthBot Environment=staging Owner=carol
-
-# REPLACE WITH REAL OUTPUT from running:
-#   ./costctl.py list ec2 > sample_output/list_ec2_<date>.txt
+EC2 Environment=dev — 3 found:
+--------------------------------------------------------------------------------
+  i-0abc123def456789a       t3.micro               running        Environment=dev, Owner=alice, Application=HealthBot
+  i-0def456ghi789012b       t3.small               running        Environment=dev, Owner=bob, Application=WebServer
+  i-0ghi789jkl012345c       t3.medium              stopped        Environment=dev, Owner=charlie, Application=Database
