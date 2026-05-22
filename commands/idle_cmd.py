@@ -95,7 +95,7 @@ def run(args):
     threshold = args.threshold
     hours = args.hours
     
-    print(f"Scanning running EC2 (excluding keep=true) — threshold {threshold}% over {hours}h:")
+    print(f"Scanning running EC2 (excluding keep=true) - threshold {threshold}% over {hours}h:")
     print("-" * 80)
     
     # Get running instances
@@ -136,6 +136,6 @@ def run(args):
     
     if idle_instances:
         print(f"\nIdle: {len(idle_instances)} instance(s): {idle_instances}")
-        print("Tip: combo with terminate →  ./costctl.py terminate ec2 --id <id>")
+        print("Tip: combo with terminate ->  ./costctl.py terminate ec2 --id <id>")
     else:
         print("\nNo idle instances found.")

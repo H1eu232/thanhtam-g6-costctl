@@ -124,7 +124,7 @@ def run(args):
         
         print("-" * 80)
         print(f"Total potential savings: ${total_savings:>6.2f}/mo")
-        print(f"\n(dry-run — pass --apply --volume-id <id> to migrate one, or --apply to migrate ALL)")
+        print("\n(dry-run - pass --apply --volume-id <id> to migrate one, or --apply to migrate ALL)")
     else:
         # Apply mode
         print(f"Migrating {len(volumes)} gp2 volume(s) to gp3...")
@@ -136,7 +136,7 @@ def run(args):
                 Iops=3000,
                 Throughput=125,
             )
-            print(f"  → modify_volume issued for {vol_id} (gp3, 3000 IOPS, 125 MiB/s)")
+            print(f"  -> modify_volume issued for {vol_id} (gp3, 3000 IOPS, 125 MiB/s)")
         
-        print(f"\nVolume(s) entering 'modifying' → 'optimizing' state. App stays online.")
+        print("\nVolume(s) entering 'modifying' -> 'optimizing' state. App stays online.")
         print(f"Use `costctl list volume` after ~30 minutes to confirm 'in-use' + gp3.")

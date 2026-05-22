@@ -91,7 +91,7 @@ def _terminate_s3(rid, force):
     key_count = response.get("KeyCount", 0)
     
     if key_count > 0:
-        print(f"Refusing — bucket {rid} has {key_count} object(s). Empty it first.")
+        print(f"Refusing - bucket {rid} has {key_count} object(s). Empty it first.")
         return
     
     if not confirm(f"Delete S3 bucket {rid}?", force=force):

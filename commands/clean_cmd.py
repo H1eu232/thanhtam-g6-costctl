@@ -108,7 +108,7 @@ def run(args):
             print(f"    - {vid}")
     
     if not args.apply:
-        print(f"(dry-run — pass --apply to actually delete these resources)")
+        print("(dry-run - pass --apply to actually delete these resources)")
         return
     
     # Apply: terminate resources

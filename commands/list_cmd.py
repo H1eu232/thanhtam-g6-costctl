@@ -151,7 +151,7 @@ def run(args):
     
     # Print results
     tag_filter_str = ", ".join(args.tag) if args.tag else "(no filter)"
-    print(f"{args.type.upper()} {tag_filter_str} — {len(rows)} found:")
+    print(f"{args.type.upper()} {tag_filter_str} - {len(rows)} found:")
     print("-" * 80)
     for row in rows:
         rid, spec, state, tags = row
